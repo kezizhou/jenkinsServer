@@ -23,3 +23,11 @@ execute 'Start Jenkins' do
     command "service jenkins start"
 end
 
+# Install Docker
+execute 'Install Docker' do
+    command "<<-EOH
+        usermod -a -G docker jenkins
+        service docker restart
+        service jenkins start
+    EOH"
+end
