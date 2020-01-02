@@ -31,3 +31,12 @@ execute 'Install Docker' do
         service jenkins start
     EOH"
 end
+
+# Install Docker Compose
+execute 'Install Docker Compose' do
+    command "<<-EOH
+    curl -L 'https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    EOH"
+end
